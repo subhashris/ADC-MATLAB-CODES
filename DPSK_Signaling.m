@@ -20,6 +20,7 @@ for ii=1:length(SNRdB)
     SNRii=SNRdB(ii);
     rn=awgn(yx,SNRii,'measured');
     figure; plot(real(rn),imag(rn),'b.',real(yx),imag(yx),'ro');legend('received','ideal');
+    xlabel("Real"); ylabel("Imaginary");
     title(['DPSK constellation @ SNR=' num2str(SNRii),' dB']); axis([-3.5 3.5 -3.5 3.5]);
     
     bcat=dpskdemod(rn);
