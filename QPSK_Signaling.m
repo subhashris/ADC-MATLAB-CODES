@@ -21,6 +21,7 @@ for ii=1:length(SNRdB)
     SNRii=SNRdB(ii);
     rn=awgn(xs,SNRii,'measured');
     figure; plot(real(rn),imag(rn),'b.',be,bo,'ro');legend('received','ideal');
+    xlabel("Real"); ylabel("Imaginary");
     title(['QPSK constellation @ SNR=' num2str(SNRii),' dB']); axis([-2 2 -2 2]);
     
     bcato=real(rn); bcato(bcato>=0)=1; bcato(bcato<0)=0;
