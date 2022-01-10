@@ -29,7 +29,7 @@ for ii=1:length(SNRdB)
     Eb_by_No=snr;
     Eb_by_No_dB(ii)=10*log10(Eb_by_No);
     BER_th(ii)=1/2*exp(-Eb_by_No);
-    BER(ii)=length(find(b~=bcat))/N;
+    BER(ii)=length(find(b~=bcat))/(N*nb);
 end
 figure;
 semilogy(Eb_by_No_dB,BER,'b--',Eb_by_No_dB,BER_th,'r*');
@@ -37,7 +37,3 @@ axis([0 12 10^-7 1]);grid on;
 xlabel('E_b/N_o (dB)'); ylabel('Bit error probability (P_e)');
 title('BER performance of QPSK');
 
-% [real(b(2:10)) angle(yx(1:9))/pi-angle(yx(2:10))/pi real(bcat(2:10))]
-% yx(2:10)
-% scatterplot(yx)
-% a = [Eb_by_No_dB; BER_th BER]
