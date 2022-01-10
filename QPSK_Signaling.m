@@ -31,10 +31,8 @@ for ii=1:length(SNRdB)
     snr=10^(SNRii./10);
     Eb_by_No=snr/2;
     Eb_by_No_dB(ii)=10*log10(Eb_by_No);
-    SER_th(ii)=erfc(sqrt(Eb_by_No));
-    SER(ii)=length(find(b~=bcat))/N;
     BER_th(ii)=1/2*erfc(sqrt(Eb_by_No));
-    BER(ii)=length(find(b~=bcat))/N;
+    BER(ii)=length(find(b~=bcat))/(N*nb);
     EVM=sqrt((sum((bo-real(rn)).^2+(be-imag(rn)).^2)/N)/var(bo+1j*be))*100;
     EVMdB(ii)=20*log10(EVM);
 end
