@@ -26,12 +26,11 @@ for ii=1:length(SNRdB)
     Eb_by_No = snr/2;
     Eb_by_No_dB(ii) = 10*log10(Eb_by_No);
     BER_th(ii) = 1/2*erfc(sqrt(Eb_by_No));
-    BER(ii) = length(find(b~=bcat))/N;
+    BER(ii) = length(find(b~=bcat))/(N*nb);
     EVM = sqrt((sum(bs-real(rn).^2))/N)/var(b)*100;
     EVMdB(ii)=20*log10(EVM);
 end
-%EnbyNo = 
-%semilogy(SNRdB,BER,'b--',SNRdB, BER_th,'r*'); axis([0 max(SNRdB) 10^-5 1])
+
 figure;
 semilogy(Eb_by_No_dB, BER, 'b-',Eb_by_No_dB, BER_th, 'b*'); axis([0 12 10^-7 1]);grid on;
 xlabel('E_b/N_o(dB)'); ylabel('Bit Error Probability (P_e)'); title('BER performance of BPSK');
